@@ -1,0 +1,31 @@
+apiVersion: integration/v1
+kind: Step
+name: deployhub-action
+version: 1
+summary: DeployHub action
+
+description: |
+  Performs DeployHub actions such as deploy and updatecomp.
+
+build:
+  apiVersion: build/v1
+  kind: Docker
+
+publish:
+  repository: relaysh/deployhub-step-action
+
+examples:
+- summary: "DeployHub deploy application"
+  content:
+    apiVersion: v1
+    kind: Step
+    name: deployhub
+    image: "relaysh/deployhub-step-action:latest"
+    spec:
+      action: deploy
+      appname: "Webstore;July 4th Sale;1_2_9_0"
+      deployenv: "QA Kubernetes GKE"
+      registry:
+        password: !Secret deploy-hub-registry-password
+        username: !Secret deploy-hub-registry-username
+        url: "https://console.deployhub.com"
