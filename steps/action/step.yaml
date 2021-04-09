@@ -29,3 +29,57 @@ examples:
         password: !Secret deploy-hub-registry-password
         username: !Secret deploy-hub-registry-username
         url: "https://console.deployhub.com"
+
+schemas:
+  spec:
+    $schema: http://json-schema.org/draft-07/schema#
+    type: object
+    properties:
+      action:
+        type: string
+        description: Action to perform (deploy, updatecomp)
+      dhurl: 
+        type: string
+        description: DeployHub server URL
+      dhuser: 
+        type: string
+        description: DeployHub User Id
+      dhpass: 
+        type: string
+        description: DeployHub Password
+      appname: 
+        type: string
+        description: Application Name to deploy or update
+      appversion: 
+        type: string
+        description: Application Version
+      deployenv: 
+        type: string
+        description: Environment to deploy to
+      compname: 
+        type: string
+        description: Component Name
+      compvariant: 
+        type: string
+        description: Component Variant  
+      compversion: 
+        type: string
+        description: Application Version
+      docker: 
+        type: boolean
+        description: Docker Component Item Type
+      file: 
+        type: boolean
+        description: File Component Item Type
+      compattr: 
+        type: string
+        description: Component Attribute  
+      envs: 
+        type: string
+        description: Environment to associate Application to
+    required:
+    - action
+    - dhurl
+    - dhuser
+    - dhpass
+    - appname
